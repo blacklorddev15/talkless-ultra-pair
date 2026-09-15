@@ -1,0 +1,97 @@
+/* TALKLESS ULTRA XMD – shared styles */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, 'Segoe UI', Roboto, sans-serif;
+  background: #0b0e14;
+  color: #e8eaf0;
+  min-height: 100vh;
+}
+.shell { max-width: 640px; margin: 0 auto; padding: 18px 16px 40px; }
+.topbar { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+.topbar .brand small { display: block; font-size: 10px; letter-spacing: 3px; color: #7c8698; }
+.topbar .brand strong { font-size: 17px; color: #fff; }
+.icon-btn {
+  background: #171c26; border: 1px solid #262d3b; color: #aab4c6;
+  padding: 7px 11px; border-radius: 9px; font-size: 15px; cursor: pointer; text-decoration: none;
+}
+.icon-btn:hover { background: #1f2634; }
+.card {
+  background: #121722; border: 1px solid #232b3b; border-radius: 16px;
+  padding: 18px; margin-bottom: 14px;
+}
+.banner-img { width: 100%; border-radius: 12px; margin-bottom: 4px; display: block; }
+h1 { font-size: 21px; margin: 6px 0 2px; }
+.sub { color: #8b95a9; font-size: 13px; margin-bottom: 14px; }
+.pill {
+  display: inline-block; font-size: 10px; letter-spacing: 2px; padding: 4px 10px;
+  border-radius: 99px; border: 1px solid #2e5e46; color: #4ade80; background: rgba(74,222,128,.07);
+  margin-bottom: 6px;
+}
+.pill.off { border-color:#7a3540; color:#f87171; background: rgba(248,113,113,.07); }
+label { display: block; font-size: 11px; letter-spacing: 1.5px; color: #7c8698; margin: 12px 0 6px; }
+input[type=tel], input[type=text], input[type=password] {
+  width: 100%; background: #0b0f17; border: 1px solid #2a3345; color: #eef1f7;
+  padding: 12px 14px; border-radius: 10px; font-size: 15px; outline: none;
+}
+input:focus { border-color: #3d5a8c; }
+.phone-wrap { display: flex; align-items: center; background: #0b0f17; border: 1px solid #2a3345; border-radius: 10px; overflow: hidden; }
+.phone-wrap span { padding: 0 12px; color: #8b95a9; font-size: 16px; border-right: 1px solid #262d3b; align-self: stretch; display: flex; align-items: center; }
+.phone-wrap input { border: none; background: transparent; border-radius: 0; }
+.btn {
+  display: block; width: 100%; border: none; border-radius: 10px; padding: 13px;
+  font-size: 15px; font-weight: 700; cursor: pointer; margin-top: 14px;
+  background: linear-gradient(135deg, #1d4ed8, #3b82f6); color: #fff;
+}
+.btn:disabled { opacity: .55; cursor: not-allowed; }
+.btn.ghost { background: #1a2130; color: #aab4c6; border: 1px solid #2a3345; }
+.status-box { margin-top: 14px; padding: 12px; border-radius: 10px; font-size: 14px; display: none; }
+.status-box.show { display: block; }
+.status-box.ok { background: rgba(74,222,128,.08); border: 1px solid #2e5e46; color: #86efac; }
+.status-box.err { background: rgba(248,113,113,.08); border: 1px solid #7a3540; color: #fca5a5; }
+.status-box.info { background: rgba(96,165,250,.08); border: 1px solid #33507e; color: #93c5fd; }
+.code-result { text-align: center; padding: 18px; display: none; }
+.code-result.show { display: block; }
+.code-eyebrow { font-size: 10px; letter-spacing: 3px; color: #7c8698; }
+.pairing-code {
+  font-family: 'JetBrains Mono', Menlo, monospace; font-size: 30px; font-weight: 800;
+  color: #4ade80; margin: 8px 0 12px; letter-spacing: 2px;
+}
+.copy-btn { background: #0b0f17; border: 1px solid #2e5e46; color: #4ade80; padding: 9px 18px; border-radius: 9px; cursor: pointer; font-size: 13px; }
+.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.stat-card { background: #0b0f17; border: 1px solid #232b3b; border-radius: 12px; padding: 12px; text-align: center; }
+.stat-card .n { font-size: 20px; font-weight: 800; }
+.stat-card .l { font-size: 10px; letter-spacing: 1px; color: #7c8698; margin-top: 2px; }
+.hidden { display: none; }
+.row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #1c2332; font-size: 13px; }
+.row:last-child { border-bottom: none; }
+.row .tag { font-size: 10px; padding: 2px 8px; border-radius: 99px; }
+.tag.on { background: rgba(74,222,128,.12); color: #4ade80; }
+.tag.off { background: rgba(148,163,184,.12); color: #94a3b8; }
+.tag.x { background: rgba(248,113,113,.12); color: #f87171; }
+textarea { width: 100%; background: #0b0f17; border: 1px solid #2a3345; color: #eef1f7; padding: 10px; border-radius: 10px; font-family: inherit; font-size: 13px; resize: vertical; min-height: 60px; }
+.footer { text-align: center; color: #5b6577; font-size: 12px; margin-top: 18px; }
+.footer a { color: #7c98c9; text-decoration: none; }
+.notice-banner { display: none; background: #33290f; border: 1px solid #7a5a20; color: #fcd34d; padding: 10px 14px; border-radius: 10px; font-size: 13px; margin-bottom: 12px; }
+.notice-banner.show { display: block; }
+.mono { font-family: Menlo, Consolas, monospace; font-size: 12px; }
+
+/* ── header actions (telegram + admin) ─────────────────────── */
+.topbar-actions { display: flex; align-items: center; gap: 8px; }
+
+/* ── app download + telegram buttons ───────────────────────── */
+/* .btn is built for <button>; these are <a>, so they need the link resets. */
+a.btn { text-decoration: none; text-align: center; }
+a.btn.ghost { color: #cdd6e5; }
+.tg-btn { background: linear-gradient(135deg, #1c8dbf, #229ED9); color: #fff; }
+.tg-btn:hover { filter: brightness(1.08); }
+
+/* ── session management ────────────────────────────────────── */
+.sess-right { display: inline-flex; align-items: center; gap: 8px; flex: 0 0 auto; }
+.row .sess-id { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 52%; }
+.del-btn {
+  background: transparent; border: 1px solid #7a3540; color: #f87171;
+  font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 8px;
+  cursor: pointer; font-family: inherit;
+}
+.del-btn:hover:not(:disabled) { background: rgba(248,113,113,.1); }
+.del-btn:disabled { opacity: .5; cursor: wait; }

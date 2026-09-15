@@ -1,0 +1,9 @@
+{
+  "name": "talkless-ultra-pair",
+  "version": "1.0.0",
+  "private": true,
+  "description": "TALKLESS ULTRA WhatsApp pairing portal - static site + serverless API (Neon)",
+  "dependencies": {
+    "pg": "^8.13.1"
+  }
+}
