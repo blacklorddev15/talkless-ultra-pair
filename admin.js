@@ -147,7 +147,11 @@ async function refreshAll() {
 
 async function refreshDb() {
   const d = await api('current_db');
-  if (d.success) $('curDbHost').textContent = d.host || d.url;
+  if (!d.success) return;
+  $('curDbHost').textContent = d.host || '-';
+  // The control database comes from process.env.DATABASE_URL. Seeing both side by side is
+  // what makes a mismatch — or a suspended control — visible instead of mysterious.
+  $('ctrlDbHost').textContent = d.controlHost || 'not set';
 }
 
 $('switchDbBtn').addEventListener('click', async () => {
@@ -170,6 +174,30 @@ $('switchDbBtn').addEventListener('click', async () => {
   } else {
     box.textContent = '❌ ' + (d.error || 'Switch failed');
     box.className = 'status-box show err';
+  }
+});
+
+$('redeployBtn').addEventListener('click', async () => {
+  const btn = $('redeployBtn');
+  const box = $('redeployMsg');
+  if (!confirm(
+    'Rebuild the production deployment now?\n\n' +
+    'The site stays up while it builds, then swaps over. Use this after changing an ' +
+    'environment variable — Vercel only applies those on a new build.')) return;
+  btn.disabled = true;
+  box.textContent = '⏳ Asking Vercel to rebuild…';
+  box.className = 'status-box show info';
+  try {
+    const d = await api('redeploy');
+    if (d.success) {
+      box.textContent = '✅ ' + (d.message || 'Rebuild started.') + (d.url ? ' — ' + d.url : '');
+      box.className = 'status-box show ok';
+    } else {
+      box.textContent = '❌ ' + (d.message || d.error || 'Redeploy failed');
+      box.className = 'status-box show err';
+    }
+  } finally {
+    btn.disabled = false;
   }
 });
 

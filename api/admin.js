@@ -1,7 +1,7 @@
 // POST /api/admin  { action, password?, ... }  or GET /api/admin?action=...
 // Actions: login | stats | sessions | keys | generate_key | set_notice | set_premium
 //          | current_db | switch_db | servers | reset_heartbeats | test_db
-//          | delete_session | clear_sessions
+//          | delete_session | clear_sessions | redeploy
 // Protected by ADMIN_PASSWORD (sent as the X-Admin-Password header or body.password).
 const {
   PREFIX,
@@ -151,7 +151,14 @@ module.exports = async function handler(req, res) {
           host = parsed.host;
           database = parsed.pathname.replace(/^\//, '');
         } catch (_) { /* ignore */ }
-        return json(res, 200, { success: true, host, database, urlMasked: maskUrl(url) });
+        // The CONTROL database is process.env.DATABASE_URL: the one every cold start
+        // bootstraps from, and the one the site falls back to when the stored pointer
+        // cannot be read. When it differs from the active database, or when it is the
+        // suspended one, that is the first fact worth seeing.
+        let controlHost = '';
+        try { controlHost = new URL(String(process.env.DATABASE_URL || '')).host; }
+        catch (_) { /* ignore */ }
+        return json(res, 200, { success: true, host, database, urlMasked: maskUrl(url), controlHost });
       }
 
       case 'switch_db': {
@@ -230,6 +237,77 @@ module.exports = async function handler(req, res) {
           `DELETE FROM ${PREFIX}sessions WHERE LOWER(status) = 'disconnected' RETURNING id`
         );
         return json(res, 200, { success: true, cleared: rows.length });
+      }
+
+      // Rebuild the current production deployment.
+      //
+      // Vercel only applies environment variables on a NEW build, so changing DATABASE_URL
+      // does nothing until something rebuilds. That rebuild is the one step that otherwise
+      // forces a trip to the dashboard, which is exactly what this button exists to avoid.
+      //
+      // Redeploying by deploymentId inherits every setting from that build - environment
+      // variables included - which is what is wanted here. See:
+      // https://vercel.com/docs/rest-api/deployments/create-a-new-deployment
+      case 'redeploy': {
+        if (typeof fetch !== 'function') {
+          return json(res, 200, {
+            success: false,
+            message: 'This deployment is running a Node runtime without fetch; needs Node 18+.',
+          });
+        }
+        const token = String(process.env.VERCEL_API_TOKEN || '').trim();
+        const project = String(process.env.PROJECT_ID || process.env.VERCEL_PROJECT_ID || '').trim();
+        const team = String(process.env.TEAM_ID || process.env.VERCEL_TEAM_ID || '').trim();
+        if (!token || !project) {
+          return json(res, 200, {
+            success: false,
+            message: 'Redeploy needs VERCEL_API_TOKEN and PROJECT_ID set on this deployment.',
+          });
+        }
+        const auth = { Authorization: `Bearer ${token}` };
+        const teamQ = team ? `&teamId=${encodeURIComponent(team)}` : '';
+
+        const listRes = await fetch(
+          `https://api.vercel.com/v6/deployments?projectId=${encodeURIComponent(project)}`
+          + `&target=production&limit=1${teamQ}`,
+          { headers: auth }
+        );
+        const list = await listRes.json();
+        if (!listRes.ok) {
+          return json(res, 200, {
+            success: false,
+            message: 'Vercel: ' + ((list.error && list.error.message) || listRes.status),
+          });
+        }
+        const latest = (list.deployments || [])[0];
+        if (!latest) {
+          return json(res, 200, { success: false, message: 'No production deployment found to rebuild.' });
+        }
+
+        const createRes = await fetch(
+          `https://api.vercel.com/v13/deployments${team ? `?teamId=${encodeURIComponent(team)}` : ''}`,
+          {
+            method: 'POST',
+            headers: Object.assign({ 'Content-Type': 'application/json' }, auth),
+            body: JSON.stringify({
+              name: latest.name,
+              deploymentId: latest.uid,
+              target: 'production',
+            }),
+          }
+        );
+        const created = await createRes.json();
+        if (!createRes.ok) {
+          return json(res, 200, {
+            success: false,
+            message: 'Vercel: ' + ((created.error && created.error.message) || createRes.status),
+          });
+        }
+        return json(res, 200, {
+          success: true,
+          message: 'Rebuild started — the site stays up while it builds.',
+          url: created.url ? `https://${created.url}` : '',
+        });
       }
 
       default:
