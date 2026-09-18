@@ -265,34 +265,49 @@ module.exports = async function handler(req, res) {
           });
         }
         const auth = { Authorization: `Bearer ${token}` };
-        const teamQ = team ? `&teamId=${encodeURIComponent(team)}` : '';
+        const teamQ = team ? `?teamId=${encodeURIComponent(team)}` : '';
 
-        const listRes = await fetch(
-          `https://api.vercel.com/v6/deployments?projectId=${encodeURIComponent(project)}`
-          + `&target=production&limit=1${teamQ}`,
+        // A fresh build from the Git source -- NOT a redeploy of the existing deployment.
+        //
+        // Vercel's redeploy-by-deploymentId inherits that build's settings, environment
+        // variables included, so it rebuilds with the OLD environment and changes nothing.
+        // That was measured on this project, not assumed: a redeploy left DATABASE_URL
+        // stale, while a build from Git picked the new value up immediately. A button that
+        // looks like it worked but silently did not is worse than no button.
+        const projRes = await fetch(
+          `https://api.vercel.com/v9/projects/${encodeURIComponent(project)}${teamQ}`,
           { headers: auth }
         );
-        const list = await listRes.json();
-        if (!listRes.ok) {
+        const proj = await projRes.json();
+        if (!projRes.ok) {
           return json(res, 200, {
             success: false,
-            message: 'Vercel: ' + ((list.error && list.error.message) || listRes.status),
+            message: 'Vercel: ' + ((proj.error && proj.error.message) || projRes.status),
           });
         }
-        const latest = (list.deployments || [])[0];
-        if (!latest) {
-          return json(res, 200, { success: false, message: 'No production deployment found to rebuild.' });
+        const link = proj.link || {};
+        if (!link.repoId) {
+          return json(res, 200, {
+            success: false,
+            message: 'This project has no Git repository linked, so a rebuild that picks up '
+                   + 'new environment variables cannot be started from here.',
+          });
         }
 
         const createRes = await fetch(
-          `https://api.vercel.com/v13/deployments${team ? `?teamId=${encodeURIComponent(team)}` : ''}`,
+          `https://api.vercel.com/v13/deployments${teamQ}`,
           {
             method: 'POST',
             headers: Object.assign({ 'Content-Type': 'application/json' }, auth),
             body: JSON.stringify({
-              name: latest.name,
-              deploymentId: latest.uid,
+              name: proj.name || link.repo,
+              project: project,
               target: 'production',
+              gitSource: {
+                type: link.type || 'github',
+                repoId: link.repoId,
+                ref: link.productionBranch || 'main',
+              },
             }),
           }
         );
