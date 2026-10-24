@@ -23,12 +23,22 @@
 
     <div id="noticeBanner" class="notice-banner"></div>
 
-    <section class="card">
-      <img id="menuImg" class="banner-img" alt="Talkless Ultra banner">
-      <div>
-        <span id="botPill" class="pill">CHECKING BOT…</span>
-        <h1>Talkless Ultra Pairing</h1>
-        <p class="sub">Clean, lightweight bot for fast and reliable WhatsApp commands.</p>
+    <section class="card hero">
+      <div class="hero-media">
+        <img
+          id="menuImg"
+          src="./assets/hero.jpg"
+          srcset="./assets/hero-720.jpg 720w, ./assets/hero.jpg 1024w"
+          sizes="(max-width: 640px) 100vw, 640px"
+          alt="Talkless XMD headquarters"
+          fetchpriority="high"
+          decoding="async">
+        <div class="hero-shade"></div>
+        <div class="hero-copy">
+          <span id="botPill" class="pill">CHECKING BOT…</span>
+          <h1>Talkless Ultra Pairing</h1>
+          <p class="sub">Clean, lightweight bot for fast and reliable WhatsApp commands.</p>
+        </div>
       </div>
     </section>
 
@@ -36,12 +46,23 @@
       <div id="statusBox" class="status-box"></div>
 
       <form id="pairForm">
+        <label for="countryTrigger">COUNTRY</label>
+        <button type="button" class="country-trigger" id="countryTrigger" aria-haspopup="dialog" aria-expanded="false">
+          <span id="countryDisplay"><span class="sel-name">Select country…</span></span>
+          <span class="caret">▾</span>
+        </button>
+        <p class="sub hidden" id="countryError" style="margin-top:6px;color:#fca5a5">
+          Country list could not load — type the dial code in the + box instead.
+        </p>
+
         <label for="phoneNumber">WHATSAPP NUMBER</label>
         <div class="phone-wrap">
-          <span>+</span>
-          <input type="tel" id="phoneNumber" placeholder="254712345678" autocomplete="tel" required>
+          <span class="plus">+</span>
+          <input type="tel" id="prefixInput" class="prefix" inputmode="numeric" maxlength="6"
+                 placeholder="254" autocomplete="tel-country-code" aria-label="Country dial code">
+          <input type="tel" id="phoneNumber" placeholder="712345678" autocomplete="tel-national" required>
         </div>
-        <p class="sub" style="margin-top:6px">Country code included, no spaces or plus.</p>
+        <p class="sub" style="margin-top:6px">Pick your country, then type the number without the leading 0.</p>
 
         <div id="premiumKeyGroup" class="hidden">
           <label for="premiumKey">ACTIVATION KEY</label>
@@ -69,6 +90,18 @@
     <footer class="footer">
       <span>Talkless Ecosystem</span> · <a href="https://t.me/Talkless_xmd_bot" target="_blank" rel="noopener noreferrer">Telegram</a> · <a href="./admin.html">Admin Dashboard</a>
     </footer>
+  </div>
+
+  <div id="countryModal" class="modal" role="dialog" aria-modal="true" aria-label="Select country">
+    <div class="modal-card">
+      <div class="modal-head">
+        <strong>Select country</strong>
+        <button type="button" class="modal-close" id="countryClose" aria-label="Close">✕</button>
+      </div>
+      <input type="text" id="countrySearch" placeholder="Search country or dial code" autocomplete="off">
+      <div id="countryList" class="country-list"></div>
+      <p class="sub hidden" id="countryEmpty" style="margin:12px 0 0;text-align:center">No country matches that search.</p>
+    </div>
   </div>
 
   <script src="./script.js"></script>
