@@ -357,3 +357,39 @@ a.btn.ghost { color: #cdd6e5; }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }
+
+/* ── TALKLESS TECH theme (admin portal) ──────────────────────────────
+   Same artwork, palette and typography as the pairing page. Appended so the
+   existing rules above keep working; only the tokens and surfaces change. */
+:root{
+  --bg:#0b0d18;
+  --surface:rgba(23,21,43,.72);
+  --line:#c5d1df33;
+  --line-strong:#c5d1df55;
+  --text:#f7f5ff;
+  --muted:#c2c8e1;
+  --faint:#9ba9bb;
+  --accent:#ffd36a;
+  --shadow:0 25px 80px #000b;
+}
+body{
+  font-family:Inter,Arial,sans-serif;
+  background-color:#080b16;
+  background-image:linear-gradient(125deg,#05081370,#0b102b72),url('https://files.catbox.moe/5m71wh.png');
+  background-position:center;background-size:cover;background-attachment:fixed;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;
+  background:
+    radial-gradient(circle at 12% 18%,#ffb14a40,transparent 29%),
+    radial-gradient(circle at 88% 18%,#f7fdff33,transparent 27%),
+    radial-gradient(circle at 90% 82%,#aab8c933,transparent 31%);
+}
+.shell{position:relative;z-index:1}
+.card{background:linear-gradient(145deg,#101827e8,#17162fe0);border-color:#eaf7ff26;backdrop-filter:blur(14px);box-shadow:0 25px 80px #000b,0 0 42px #eaf7ff1f}
+.brand strong,.card h2,.card h3{font-family:Orbitron,sans-serif;letter-spacing:.06em}
+input,select,textarea{background:linear-gradient(120deg,#0a1025ee,#1b2132ee);border-color:#c5d1dfaa;color:#f7f5ff;border-radius:12px}
+input:focus,select:focus,textarea:focus{border-color:#f8fdff;box-shadow:0 0 0 4px #eaf7ff25;outline:none}
+button{background:linear-gradient(105deg,#ff9b45 0%,#d9b45e 27%,#aebdce 55%,#f8fdff 78%,#a56bff 100%);color:#111827;font-weight:800;border:1px solid #ffffff35;border-radius:12px;text-shadow:0 1px #ffffff70}
+button:hover{filter:brightness(1.06)}
+a{color:#ffe29a}

@@ -1,109 +1,299 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>𝐓𝐀𝐋𝐊𝐋𝐄𝐒𝐒 𝐔𝐋𝐓𝐑𝐀 - Dedicated WhatsApp Pairing</title>
-  <link rel="stylesheet" href="./style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#090817">
+<title>TALKLESS TECH · Pairing Code System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--gold:#ffd36a;--cyan:#4ceaff;--purple:#a56bff;--pink:#ff63d5;--ink:#080817;--goldfish:#ff9b45;--diamond:#eaf7ff;--ice:#a9dfff;--silver:#c9d2dc;--platinum:#eef2f6;--steel:#718096}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;color:#f7f5ff;font-family:Inter,Arial,sans-serif;background-color:#080b16;background-image:linear-gradient(125deg,#05081370,#0b102b72),url('https://files.catbox.moe/5m71wh.png');background-position:center;background-size:cover;background-attachment:fixed;display:flex;align-items:center;justify-content:center;padding:28px 16px;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 12% 18%,#ffb14a55,transparent 29%),radial-gradient(circle at 88% 18%,#f7fdff55,transparent 27%),radial-gradient(circle at 90% 82%,#aab8c944,transparent 31%),radial-gradient(circle at 52% 48%,#8c42ff25,transparent 55%)}
+.wrap{width:min(100%,720px);position:relative;z-index:1}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:28px}
+.brand{font:800 clamp(16px,2.5vw,20px) Orbitron,sans-serif;letter-spacing:2px}
+.brand b{background:linear-gradient(90deg,#fff1b8,#ffad55,#fff,#c7d3e0);background-clip:text;-webkit-background-clip:text;color:transparent}
+.pill{font:700 9px Orbitron,sans-serif;letter-spacing:1px;color:#ffe8a7;border:1px solid #ffd36a77;border-radius:30px;padding:9px 12px;background:#2a1b0b99;white-space:nowrap}
+.hero{text-align:center;margin-bottom:28px}
+.kicker{display:inline-block;padding:8px 13px;border-radius:30px;border:1px solid #4ceaff77;background:#071d30bb;color:#a6f4ff;font:700 9px Orbitron,sans-serif;letter-spacing:1.5px}
+h1{font:800 clamp(32px,7.5vw,58px)/1.18 Orbitron,sans-serif;letter-spacing:-2px;margin:18px auto 12px;max-width:680px;text-wrap:balance}
+h1 span{display:inline-block;background:linear-gradient(90deg,#fff0b0,#ffd05c,#bb83ff,#4ceaff);background-clip:text;-webkit-background-clip:text;color:transparent}
+.desc{color:#c2c8e1;font-size:13px;line-height:1.7;max-width:490px;margin:auto}
+.panel{position:relative;padding:clamp(22px,5vw,38px);border-radius:25px;background:linear-gradient(145deg,#101827e8,#17162fe0) padding-box,linear-gradient(130deg,#ffad55,#fff0b8,#f8fdff,#9ba9bb,#a56bff) border-box;backdrop-filter:blur(14px);border:1px solid transparent;box-shadow:0 25px 80px #000b,0 0 42px #eaf7ff24;overflow:hidden}
+.panel:before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#ff9b45,#ffd36a,#fff,#b9c5d3,#f8fdff,#a56bff)}
+.panel-head{display:flex;align-items:center;gap:13px;margin-bottom:25px}
+.icon{width:46px;height:46px;border-radius:15px;display:grid;place-items:center;font-size:21px;color:#1b1224;background:linear-gradient(135deg,#fff7d6,#ffad55 42%,#f8fdff 76%,#aebdce);box-shadow:0 8px 24px #eaf7ff35}
+.panel-head h2{font:700 clamp(15px,3vw,19px)/1.35 Orbitron,sans-serif;letter-spacing:1px;margin:0 0 5px}
+.panel-head p{font-size:11px;color:#aebbd8;margin:0}
+label{display:block;font:800 11px Orbitron,sans-serif;letter-spacing:1.3px;color:#e8eaff;margin:0 0 9px}
+.phone-row{display:grid;grid-template-columns:1.25fr 1fr;gap:10px}
+select,input{width:100%;height:55px;border-radius:13px;color:#fff;padding:0 14px;font:600 14px Inter;outline:none;border:1px solid #c5d1dfaa;background:linear-gradient(120deg,#0a1025ee,#1b2132ee);box-shadow:inset 0 2px 9px #0007,0 0 0 1px #ffffff08}
+select{appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:38px;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' fill='none' stroke='%23d7e2ef' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>"),linear-gradient(120deg,#0a1025ee,#1b2132ee);background-repeat:no-repeat,no-repeat;background-position:right 14px center,0 0;background-size:12px 8px,100% 100%}
+select:focus,input:focus{border-color:#f8fdff;box-shadow:0 0 0 4px #eaf7ff25}
+input::placeholder{color:#7885a5}
+.hint{font-size:10px;color:#9eaccb;line-height:1.6;margin:10px 0 20px;min-height:16px}
+.hint b{color:#fff0b8}
+button{width:100%;height:56px;margin-top:2px;border:1px solid #ffffff35;border-radius:13px;color:#111827;font:800 clamp(10px,2vw,12px) Orbitron,sans-serif;letter-spacing:1.5px;cursor:pointer;background:linear-gradient(105deg,#ff9b45 0%,#d9b45e 27%,#aebdce 55%,#f8fdff 78%,#a56bff 100%);text-shadow:0 1px #ffffff70;box-shadow:0 12px 30px #c8d4e544,inset 0 1px 0 #fff;transition:.2s}
+button:hover{transform:translateY(-2px);filter:brightness(1.06)}
+button:disabled{opacity:.6;cursor:wait;transform:none}
+button:focus-visible,select:focus-visible,input:focus-visible,.link:focus-visible{outline:3px solid #ffe39a;outline-offset:3px}
+.result{display:none;margin-top:18px;padding:16px;border:1px solid #eaf7ff99;border-radius:14px;background:linear-gradient(120deg,#201b16ee,#111a2bee);box-shadow:0 10px 30px #0005;color:#f6edcf;font-size:12px;line-height:1.6}
+.result.show{display:block;animation:rise .3s ease}
+.result strong{display:block;color:#fff0b8;font:800 10px Orbitron,sans-serif;letter-spacing:1px;margin-bottom:6px}
+.code{font:800 clamp(20px,6vw,28px) Orbitron,sans-serif;letter-spacing:5px;color:#f8fdff;text-shadow:0 0 18px #dbeeff88;word-break:break-word;margin:9px 0}
+.copy{height:39px;margin-top:9px;background:linear-gradient(100deg,#ff9b45,#e4c77e,#c5d0dc,#f8fdff);color:#111827;font-size:10px}
+.links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:15px}
+.link{display:flex;align-items:center;justify-content:center;gap:8px;min-height:54px;padding:14px 12px;border-radius:12px;text-decoration:none;color:#fff1c5;border:1px solid #eaf7ff99;background:linear-gradient(120deg,#272015dd,#202b3ddd);font:800 10px Orbitron,sans-serif;letter-spacing:.6px;text-align:center;line-height:1.45;box-shadow:0 8px 20px #0004;transition:transform .2s,filter .2s}
+.link:hover{transform:translateY(-2px);filter:brightness(1.15)}
+.link.main{border-color:#d9e8f7;background:linear-gradient(120deg,#182d42dd,#2b2440dd);color:#f8fdff}
+.foot{text-align:center;color:#9ca8c4;font-size:9px;line-height:1.7;margin:20px auto 0;max-width:560px}
+.foot b{color:#fff0b8}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.link.admin{grid-column:1 / -1;border-color:#c5d1df55;background:linear-gradient(120deg,#1a1d2bcc,#22283add);color:#e8eef6;letter-spacing:1px}
+.link.admin:hover{border-color:#ffd36a88;color:#ffe29a}
+
+@media(max-width:520px){.top{align-items:flex-start}.brand{font-size:15px}.pill{font-size:8px;padding:8px 10px}h1{font-size:clamp(29px,8vw,42px);letter-spacing:-1.2px}.phone-row{grid-template-columns:minmax(0,1fr)}.links{grid-template-columns:1fr}.link{min-height:50px}}
+
+/* welcome / initialization screen */
+#welcomeLoader{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at 50% 35%,#38224ddd,#080817f5 72%),url('https://files.catbox.moe/5m71wh.png') center/cover;transition:opacity .45s ease,visibility .45s ease}
+#welcomeLoader.hide{opacity:0;visibility:hidden;pointer-events:none}
+.loader-card{text-align:center;width:min(100%,390px);padding:34px 24px;border:1px solid #eaf7ff66;border-radius:24px;background:linear-gradient(145deg,#17152bdc,#21152fe0);box-shadow:0 20px 70px #0009,0 0 35px #ff9b4530;backdrop-filter:blur(16px)}
+.loader-mark{width:68px;height:68px;margin:0 auto 19px;border-radius:21px;display:grid;place-items:center;font:800 27px Orbitron,sans-serif;color:#211326;background:linear-gradient(135deg,#fff0b0,#ff9b45 55%,#eaf7ff);box-shadow:0 0 30px #ffb45a55}
+.loader-title{font:800 20px Orbitron,sans-serif;letter-spacing:1.3px;color:#fff;margin-bottom:8px}
+.loader-title span{background:linear-gradient(90deg,#ffb45a,#fff0b0,#eaf7ff);background-clip:text;-webkit-background-clip:text;color:transparent}
+.loader-sub{font:600 9px Orbitron,sans-serif;letter-spacing:2px;color:#c9d9ee}
+.loader-track{height:4px;border-radius:20px;background:#ffffff20;margin:23px 0 0;overflow:hidden}
+.loader-progress{height:100%;width:0;background:linear-gradient(90deg,#ff9b45,#a56bff,#eaf7ff);animation:loadbar 2s ease forwards}
+@keyframes loadbar{to{width:100%}}
+@media(prefers-reduced-motion:reduce){#welcomeLoader{transition:none}.loader-progress{animation:none;width:100%}}
+
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
 </head>
 <body>
-  <div class="shell">
-    <header class="topbar">
-      <div class="brand">
-        <small>ESSENTIAL BOT</small>
-        <strong>𝐓𝐀𝐋𝐊𝐋𝐄𝐒𝐒 𝐔𝐋𝐓𝐑𝐀 𝐗𝐌𝐃</strong>
-      </div>
-      <div class="topbar-actions">
-        <a class="icon-btn" href="https://t.me/Talkless_xmd_bot" target="_blank" rel="noopener noreferrer" title="Telegram bot">✈</a>
-        <a class="icon-btn" href="./admin.html" title="Admin">⚡</a>
-      </div>
-    </header>
 
-    <div id="noticeBanner" class="notice-banner"></div>
-
-    <section class="card hero">
-      <div class="hero-media">
-        <img
-          id="menuImg"
-          src="./assets/hero.jpg"
-          srcset="./assets/hero-720.jpg 720w, ./assets/hero.jpg 1024w"
-          sizes="(max-width: 640px) 100vw, 640px"
-          alt="Talkless XMD headquarters"
-          fetchpriority="high"
-          decoding="async">
-        <div class="hero-shade"></div>
-        <div class="hero-copy">
-          <span id="botPill" class="pill">CHECKING BOT…</span>
-          <h1>Talkless Ultra Pairing</h1>
-          <p class="sub">Clean, lightweight bot for fast and reliable WhatsApp commands.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="card">
-      <div id="statusBox" class="status-box"></div>
-
-      <form id="pairForm">
-        <label for="countryTrigger">COUNTRY</label>
-        <button type="button" class="country-trigger" id="countryTrigger" aria-haspopup="dialog" aria-expanded="false">
-          <span id="countryDisplay"><span class="sel-name">Select country…</span></span>
-          <span class="caret">▾</span>
-        </button>
-        <p class="sub hidden" id="countryError" style="margin-top:6px;color:#fca5a5">
-          Country list could not load — type the dial code in the + box instead.
-        </p>
-
-        <label for="phoneNumber">WHATSAPP NUMBER</label>
-        <div class="phone-wrap">
-          <span class="plus">+</span>
-          <input type="tel" id="prefixInput" class="prefix" inputmode="numeric" maxlength="6"
-                 placeholder="254" autocomplete="tel-country-code" aria-label="Country dial code">
-          <input type="tel" id="phoneNumber" placeholder="712345678" autocomplete="tel-national" required>
-        </div>
-        <p class="sub" style="margin-top:6px">Pick your country, then type the number without the leading 0.</p>
-
-        <div id="premiumKeyGroup" class="hidden">
-          <label for="premiumKey">ACTIVATION KEY</label>
-          <input type="text" id="premiumKey" placeholder="TL-XXXX-XXXX" autocomplete="off" spellcheck="false">
-        </div>
-
-        <button type="submit" class="btn" id="submitBtn">Generate Pairing Code</button>
-      </form>
-
-      <div id="resultBox" class="code-result">
-        <span class="code-eyebrow">YOUR PAIRING CODE</span>
-        <div class="pairing-code" id="pairingCode">---- - ----</div>
-        <p class="sub">Open WhatsApp → Linked Devices → Link with phone number.</p>
-        <button type="button" class="copy-btn" id="copyBtn">Copy Code</button>
-      </div>
-    </section>
-
-    <section class="card">
-      <h1>Talkless Ultra on Android</h1>
-      <p class="sub">Install the app for one-tap pairing, or reach us on Telegram for support and updates.</p>
-      <a class="btn ghost" id="appDownload" href="./talkless-ultra.apk" download="talkless-ultra.apk" rel="noopener">⬇ Download for Android (APK)</a>
-      <a class="btn tg-btn" id="telegramBtn" href="https://t.me/Talkless_xmd_bot" target="_blank" rel="noopener noreferrer">✈ Open Telegram Bot</a>
-    </section>
-
-    <footer class="footer">
-      <span>Talkless Ecosystem</span> · <a href="https://t.me/Talkless_xmd_bot" target="_blank" rel="noopener noreferrer">Telegram</a> · <a href="./admin.html">Admin Dashboard</a>
-    </footer>
+<div id="welcomeLoader" role="status" aria-live="polite" aria-label="Initializing TALKLESS TECH Pairing Code System">
+  <div class="loader-card">
+    <div class="loader-mark">TX</div>
+    <div class="loader-title">WELCOME TO <span>TALKLESS TECH PAIRING</span></div>
+    <div class="loader-sub">INITIALIZING TALKLESS TECH SYSTEM</div>
+    <div class="loader-track"><div class="loader-progress"></div></div>
   </div>
+</div>
 
-  <div id="countryModal" class="modal" role="dialog" aria-modal="true" aria-label="Select country">
-    <div class="modal-card">
-      <div class="modal-head">
-        <strong>Select country</strong>
-        <button type="button" class="modal-close" id="countryClose" aria-label="Close">✕</button>
+<main class="wrap">
+  <header class="top"><div class="brand">TALKLESS <b>TECH</b></div><div class="pill">OFFICIAL PAIRING SYSTEM</div></header>
+
+  <section class="hero">
+    <div class="kicker">SECURE DEVICE CONNECTION</div>
+    <h1><span>TALKLESS PAIRING</span><br>CODE SYSTEM</h1>
+    <p class="desc">Pick your country, enter your WhatsApp number, and request your TALKLESS TECH pairing code.</p>
+  </section>
+
+  <section class="panel">
+    <div class="panel-head"><div class="icon">⌁</div><div><h2>PHONE NUMBER PAIRING</h2><p>Request a one-time device pairing code</p></div></div>
+
+    <form id="pairForm" novalidate>
+      <label for="country">COUNTRY</label>
+      <div class="phone-row">
+        <select id="country" aria-label="Country and calling code" required>
+          <option value="+254">🇰🇪  Kenya (+254)</option>
+        </select>
+        <input id="phone" type="tel" inputmode="numeric" autocomplete="tel-national"
+               placeholder="712345678" maxlength="15" aria-label="WhatsApp number" required>
       </div>
-      <input type="text" id="countrySearch" placeholder="Search country or dial code" autocomplete="off">
-      <div id="countryList" class="country-list"></div>
-      <p class="sub hidden" id="countryEmpty" style="margin:12px 0 0;text-align:center">No country matches that search.</p>
-    </div>
-  </div>
+      <p class="hint" id="preview">Choose a country, then enter the number without the leading zero. Example: for Kenya, 712345678.</p>
+      <div id="keyGroup" style="display:none;margin-top:14px">
+        <label for="premiumKey">ACTIVATION KEY</label>
+        <input id="premiumKey" type="text" placeholder="TL-XXXX-XXXX" autocomplete="off" spellcheck="false">
+      </div>
+      <button id="requestBtn" type="submit">GENERATE PAIRING CODE&nbsp; →</button>
+    </form>
 
-  <script src="./script.js"></script>
+    <div class="result" id="result" role="status" aria-live="polite"></div>
+  </section>
+
+  <nav class="links" aria-label="Talkless websites">
+    <a class="link" href="https://talkless-pairing.zone.id" target="_blank" rel="noopener noreferrer">↗ PAIRING SERVICE</a>
+    <a class="link main" href="https://www.talkless.co.ke" target="_blank" rel="noopener noreferrer">⌂ TALKLESS TECH WEBSITE</a>
+    <a class="link admin" href="/admin.html">⚙ ADMIN PORTAL</a>
+  </nav>
+
+  <p class="foot"><b>Keep your pairing code private.</b> Only enter it in the official WhatsApp device-linking flow. This page needs the TALKLESS TECH pairing API connected before it can generate real codes.</p>
+</main>
+
+<script>
+/* ── welcome screen: 2s ─────────────────────────────────────── */
+window.addEventListener("DOMContentLoaded", () => {
+  window.setTimeout(() => document.getElementById("welcomeLoader")?.classList.add("hide"), 2000);
+});
+
+/* ── countries: [name, dial, flag] ──────────────────────────── */
+const COUNTRIES = [["Afghanistan","+93","🇦🇫"],["Albania","+355","🇦🇱"],["Algeria","+213","🇩🇿"],["Andorra","+376","🇦🇩"],["Angola","+244","🇦🇴"],["Antigua and Barbuda","+1-268","🇦🇬"],["Argentina","+54","🇦🇷"],["Armenia","+374","🇦🇲"],["Australia","+61","🇦🇺"],["Austria","+43","🇦🇹"],["Azerbaijan","+994","🇦🇿"],["Bahamas","+1-242","🇧🇸"],["Bahrain","+973","🇧🇭"],["Bangladesh","+880","🇧🇩"],["Barbados","+1-246","🇧🇧"],["Belarus","+375","🇧🇾"],["Belgium","+32","🇧🇪"],["Belize","+501","🇧🇿"],["Benin","+229","🇧🇯"],["Bhutan","+975","🇧🇹"],["Bolivia","+591","🇧🇴"],["Bosnia and Herzegovina","+387","🇧🇦"],["Botswana","+267","🇧🇼"],["Brazil","+55","🇧🇷"],["Brunei","+673","🇧🇳"],["Bulgaria","+359","🇧🇬"],["Burkina Faso","+226","🇧🇫"],["Burundi","+257","🇧🇮"],["Cabo Verde","+238","🇨🇻"],["Cambodia","+855","🇰🇭"],["Cameroon","+237","🇨🇲"],["Canada","+1","🇨🇦"],["Central African Republic","+236","🇨🇫"],["Chad","+235","🇹🇩"],["Chile","+56","🇨🇱"],["China","+86","🇨🇳"],["Colombia","+57","🇨🇴"],["Comoros","+269","🇰🇲"],["Congo","+242","🇨🇬"],["Costa Rica","+506","🇨🇷"],["Croatia","+385","🇭🇷"],["Cuba","+53","🇨🇺"],["Cyprus","+357","🇨🇾"],["Czechia","+420","🇨🇿"],["Democratic Republic of the Congo","+243","🇨🇩"],["Denmark","+45","🇩🇰"],["Djibouti","+253","🇩🇯"],["Dominica","+1-767","🇩🇲"],["Dominican Republic","+1-809","🇩🇴"],["Ecuador","+593","🇪🇨"],["Egypt","+20","🇪🇬"],["El Salvador","+503","🇸🇻"],["Equatorial Guinea","+240","🇬🇶"],["Eritrea","+291","🇪🇷"],["Estonia","+372","🇪🇪"],["Eswatini","+268","🇸🇿"],["Ethiopia","+251","🇪🇹"],["Fiji","+679","🇫🇯"],["Finland","+358","🇫🇮"],["France","+33","🇫🇷"],["Gabon","+241","🇬🇦"],["Gambia","+220","🇬🇲"],["Georgia","+995","🇬🇪"],["Germany","+49","🇩🇪"],["Ghana","+233","🇬🇭"],["Greece","+30","🇬🇷"],["Grenada","+1-473","🇬🇩"],["Guatemala","+502","🇬🇹"],["Guinea","+224","🇬🇳"],["Guinea-Bissau","+245","🇬🇼"],["Guyana","+592","🇬🇾"],["Haiti","+509","🇭🇹"],["Honduras","+504","🇭🇳"],["Hungary","+36","🇭🇺"],["Iceland","+354","🇮🇸"],["India","+91","🇮🇳"],["Indonesia","+62","🇮🇩"],["Iran","+98","🇮🇷"],["Iraq","+964","🇮🇶"],["Ireland","+353","🇮🇪"],["Israel","+972","🇮🇱"],["Italy","+39","🇮🇹"],["Ivory Coast","+225","🇨🇮"],["Jamaica","+1-876","🇯🇲"],["Japan","+81","🇯🇵"],["Jordan","+962","🇯🇴"],["Kazakhstan","+7","🇰🇿"],["Kenya","+254","🇰🇪"],["Kiribati","+686","🇰🇮"],["Kuwait","+965","🇰🇼"],["Kyrgyzstan","+996","🇰🇬"],["Laos","+856","🇱🇦"],["Latvia","+371","🇱🇻"],["Lebanon","+961","🇱🇧"],["Lesotho","+266","🇱🇸"],["Liberia","+231","🇱🇷"],["Libya","+218","🇱🇾"],["Liechtenstein","+423","🇱🇮"],["Lithuania","+370","🇱🇹"],["Luxembourg","+352","🇱🇺"],["Madagascar","+261","🇲🇬"],["Malawi","+265","🇲🇼"],["Malaysia","+60","🇲🇾"],["Maldives","+960","🇲🇻"],["Mali","+223","🇲🇱"],["Malta","+356","🇲🇹"],["Marshall Islands","+692","🇲🇭"],["Mauritania","+222","🇲🇷"],["Mauritius","+230","🇲🇺"],["Mexico","+52","🇲🇽"],["Micronesia","+691","🇫🇲"],["Moldova","+373","🇲🇩"],["Monaco","+377","🇲🇨"],["Mongolia","+976","🇲🇳"],["Montenegro","+382","🇲🇪"],["Morocco","+212","🇲🇦"],["Mozambique","+258","🇲🇿"],["Myanmar","+95","🇲🇲"],["Namibia","+264","🇳🇦"],["Nauru","+674","🇳🇷"],["Nepal","+977","🇳🇵"],["Netherlands","+31","🇳🇱"],["New Zealand","+64","🇳🇿"],["Nicaragua","+505","🇳🇮"],["Niger","+227","🇳🇪"],["Nigeria","+234","🇳🇬"],["North Korea","+850","🇰🇵"],["North Macedonia","+389","🇲🇰"],["Norway","+47","🇳🇴"],["Oman","+968","🇴🇲"],["Pakistan","+92","🇵🇰"],["Palau","+680","🇵🇼"],["Palestine","+970","🇵🇸"],["Panama","+507","🇵🇦"],["Papua New Guinea","+675","🇵🇬"],["Paraguay","+595","🇵🇾"],["Peru","+51","🇵🇪"],["Philippines","+63","🇵🇭"],["Poland","+48","🇵🇱"],["Portugal","+351","🇵🇹"],["Qatar","+974","🇶🇦"],["Romania","+40","🇷🇴"],["Russia","+7","🇷🇺"],["Rwanda","+250","🇷🇼"],["Saint Kitts and Nevis","+1-869","🇰🇳"],["Saint Lucia","+1-758","🇱🇨"],["Saint Vincent and the Grenadines","+1-784","🇻🇨"],["Samoa","+685","🇼🇸"],["San Marino","+378","🇸🇲"],["Sao Tome and Principe","+239","🇸🇹"],["Saudi Arabia","+966","🇸🇦"],["Senegal","+221","🇸🇳"],["Serbia","+381","🇷🇸"],["Seychelles","+248","🇸🇨"],["Sierra Leone","+232","🇸🇱"],["Singapore","+65","🇸🇬"],["Slovakia","+421","🇸🇰"],["Slovenia","+386","🇸🇮"],["Solomon Islands","+677","🇸🇧"],["Somalia","+252","🇸🇴"],["South Africa","+27","🇿🇦"],["South Korea","+82","🇰🇷"],["South Sudan","+211","🇸🇸"],["Spain","+34","🇪🇸"],["Sri Lanka","+94","🇱🇰"],["Sudan","+249","🇸🇩"],["Suriname","+597","🇸🇷"],["Sweden","+46","🇸🇪"],["Switzerland","+41","🇨🇭"],["Syria","+963","🇸🇾"],["Tajikistan","+992","🇹🇯"],["Tanzania","+255","🇹🇿"],["Thailand","+66","🇹🇭"],["Timor-Leste","+670","🇹🇱"],["Togo","+228","🇹🇬"],["Tonga","+676","🇹🇴"],["Trinidad and Tobago","+1-868","🇹🇹"],["Tunisia","+216","🇹🇳"],["Turkey","+90","🇹🇷"],["Turkmenistan","+993","🇹🇲"],["Tuvalu","+688","🇹🇻"],["Uganda","+256","🇺🇬"],["Ukraine","+380","🇺🇦"],["United Arab Emirates","+971","🇦🇪"],["United Kingdom","+44","🇬🇧"],["United States","+1","🇺🇸"],["Uruguay","+598","🇺🇾"],["Uzbekistan","+998","🇺🇿"],["Vanuatu","+678","🇻🇺"],["Vatican City","+39","🇻🇦"],["Venezuela","+58","🇻🇪"],["Vietnam","+84","🇻🇳"],["Yemen","+967","🇾🇪"],["Zambia","+260","🇿🇲"],["Zimbabwe","+263","🇿🇼"]];
+
+/* ── pairing API: set the full https URL of your backend ────── */
+const REQUEST_URL = "/api/request";
+const STATUS_URL = "/api/status";
+const POLL_MS = 3000;
+let pollTimer = null;
+
+const $ = (id) => document.getElementById(id);
+const sel = $("country");
+const phoneInput = $("phone");
+const preview = $("preview");
+
+/* populate, sorted by name */
+(function fillCountries() {
+  const frag = document.createDocumentFragment();
+  COUNTRIES
+    .slice()
+    .sort((a, b) => a[0].localeCompare(b[0]))
+    .forEach(([name, dial, flag]) => {
+      const opt = document.createElement("option");
+      opt.value = dial;
+      opt.textContent = flag + "  " + name + " (" + dial + ")";
+      frag.appendChild(opt);
+    });
+  sel.textContent = "";
+  sel.appendChild(frag);
+
+  /* default to Kenya (+254); the user picks their own country */
+  sel.value = "+254";
+})();
+
+function digits(v) { return String(v || "").replace(/\D/g, ""); }
+
+/* cc + local → full number, dropping a duplicated country code or leading 0 */
+function buildNumber(ccRaw, localRaw) {
+  const cc = digits(ccRaw);
+  let local = digits(localRaw);
+  if (!cc || !local) return "";
+  if (local.startsWith(cc) && local.length > cc.length + 5) local = local.slice(cc.length);
+  local = local.replace(/^0+/, "");
+  const full = cc + local;
+  return full.length >= 8 ? full : "";
+}
+
+function updatePreview() {
+  const full = buildNumber(sel.value, phoneInput.value);
+  preview.innerHTML = full
+    ? "Code will be sent for <b>+" + full + "</b>"
+    : "Choose a country, then enter the number without the leading zero. Example: for Kenya, 712345678.";
+}
+
+["input", "change", "keyup"].forEach((ev) => phoneInput.addEventListener(ev, updatePreview));
+sel.addEventListener("change", updatePreview);
+
+/* ── request a code, then poll /api/status for it ──────────── */
+function stopPolling() {
+  if (pollTimer) { clearTimeout(pollTimer); pollTimer = null; }
+}
+
+function showCode(code, full) {
+  $("result").innerHTML =
+    "<strong>TALKLESS TECH PAIRING · BOT GENERATED CODE</strong>" +
+    '<div class="code" id="pairCode"></div>' +
+    "<div>Enter this in WhatsApp → Linked devices → Link with phone number, for +" + full + ".</div>" +
+    '<button class="copy" id="copyCode" type="button">COPY GENERATED BOT CODE</button>';
+  $("result").classList.add("show");
+  $("pairCode").textContent = code;
+  $("copyCode").addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText(code); $("copyCode").textContent = "BOT CODE COPIED ✓"; }
+    catch { $("copyCode").textContent = "COPY NOT AVAILABLE"; }
+  });
+}
+
+async function poll(id, full) {
+  try {
+    const res = await fetch(STATUS_URL + "?id=" + encodeURIComponent(id), { cache: "no-store" });
+    const data = await res.json();
+    if (data.status === "ready" && data.pairing_code) {
+      stopPolling();
+      showCode(String(data.pairing_code).replace(/\s+/g, "").toUpperCase(), full);
+      $("requestBtn").disabled = false;
+      $("requestBtn").textContent = "GENERATE PAIRING CODE\u00a0 →";
+      return;
+    }
+    if (data.status === "error" || data.status === "expired" || data.error) {
+      stopPolling();
+      throw new Error(data.error || "That request expired. Generate a new code.");
+    }
+    $("result").innerHTML = "<strong>WAITING FOR THE BOT</strong>The bot has your request for +" + full +
+      " and will send the code here automatically. Keep this page open.";
+    $("result").classList.add("show");
+    pollTimer = setTimeout(() => poll(id, full), POLL_MS);
+  } catch (error) {
+    stopPolling();
+    $("requestBtn").disabled = false;
+    $("requestBtn").textContent = "GENERATE PAIRING CODE\u00a0 →";
+    $("result").innerHTML = "<strong>PAIRING REQUEST FAILED</strong>" +
+      String(error.message || "Unable to reach the pairing service.").replace(/[<>&"]/g, "");
+    $("result").classList.add("show");
+  }
+}
+
+$("pairForm").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const result = $("result");
+  const btn = $("requestBtn");
+  result.classList.remove("show");
+
+  const cc = digits(sel.value);
+  const local = digits(phoneInput.value);
+  const full = buildNumber(cc, local);
+
+  if (!cc) {
+    result.innerHTML = "<strong>CHOOSE A COUNTRY</strong>Select your country so the calling code is added automatically.";
+    result.classList.add("show"); return;
+  }
+  if (!/^\d{6,14}$/.test(local)) {
+    result.innerHTML = "<strong>CHECK PHONE NUMBER</strong>Enter the number without the leading zero, digits only (e.g. 712345678).";
+    result.classList.add("show"); return;
+  }
+  if (!full) {
+    result.innerHTML = "<strong>NUMBER TOO SHORT</strong>That does not look like a complete WhatsApp number. Check the country and the local number.";
+    result.classList.add("show"); return;
+  }
+
+  stopPolling();
+  btn.disabled = true; btn.textContent = "REQUESTING CODE...";
+  result.innerHTML = "<strong>REQUESTING PAIRING CODE</strong>Contacting the pairing service for +" + full + "…";
+  result.classList.add("show");
+
+  try {
+    const payload = { phone: full };
+    const key = ($("premiumKey") && $("premiumKey").value.trim().toUpperCase()) || "";
+    if (key) payload.key = key;
+
+    const res = await fetch(REQUEST_URL, {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    const data = await res.json().catch(() => ({}));
+
+    if (res.status === 403 && /activation key/i.test(data.error || "")) {
+      if ($("keyGroup")) $("keyGroup").style.display = "block";
+      if ($("premiumKey")) $("premiumKey").focus();
+      throw new Error(data.error);
+    }
+    if (!res.ok) throw new Error(data.error || "Pairing request failed.");
+
+    const id = data.id || data.requestId;
+    if (!id) throw new Error("The service did not return a request id.");
+
+    result.innerHTML = "<strong>REQUEST ACCEPTED</strong>Waiting for the bot to generate a code for +" + full + "…";
+    poll(id, full);
+  } catch (error) {
+    btn.disabled = false; btn.textContent = "GENERATE PAIRING CODE\u00a0 →";
+    result.innerHTML = "<strong>PAIRING REQUEST FAILED</strong>" +
+      String(error.message || "Unable to reach the pairing service.").replace(/[<>&"]/g, "");
+    result.classList.add("show");
+  }
+});
+</script>
 </body>
 </html>
