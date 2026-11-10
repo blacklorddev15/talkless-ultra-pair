@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>𝐓𝐀𝐋𝐊𝐋𝐄𝐒𝐒 𝐔𝐋𝐓𝐑𝐀 - Paste Session ID</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="shell">
+    <header class="topbar">
+      <div class="brand">
+        <small>ESSENTIAL BOT</small>
+        <strong>𝐓𝐀𝐋𝐊𝐋𝐄𝐒𝐒 𝐔𝐋𝐓𝐑𝐀 𝐗𝐌𝐃</strong>
+      </div>
+      <div class="topbar-actions">
+        <a class="icon-btn" href="./index.html" title="Pair a new number">＋</a>
+        <a class="icon-btn" href="https://t.me/Talkless_xmd_bot" target="_blank" rel="noopener noreferrer" title="Telegram bot">✈</a>
+        <a class="icon-btn" href="./admin.html" title="Admin">⚡</a>
+      </div>
+    </header>
+
+    <section class="card">
+      <span class="pill">SESSION RESTORE</span>
+      <h1>Paste Session ID</h1>
+      <p class="sub">
+        Already have a TALKLESS session? Paste it here and the bot reconnects that number
+        without a new pairing code.
+      </p>
+
+      <div id="statusBox" class="status-box"></div>
+
+      <form id="sessionForm">
+        <label for="sessionInput">SESSION ID</label>
+        <textarea id="sessionInput" rows="6" spellcheck="false" autocomplete="off"
+                  placeholder="Talkless!eyJjcmVkcyI6..."></textarea>
+        <p class="sub" style="margin-top:6px">
+          Starts with <span class="mono">Talkless!</span> — paste the whole string, including the prefix.
+        </p>
+
+        <button type="submit" class="btn" id="submitBtn">Connect This Session</button>
+        <button type="button" class="btn ghost" id="pasteBtn">Paste From Clipboard</button>
+      </form>
+    </section>
+
+    <section class="card" id="progressCard" style="display:none">
+      <span class="pill" id="progressPill">QUEUED</span>
+      <h1 id="progressTitle">Waiting for the bot…</h1>
+      <p class="sub" id="progressText">Submission <span class="mono" id="subId">—</span></p>
+      <div class="status-box" id="progressBox"></div>
+    </section>
+
+    <section class="card">
+      <h1>How it works</h1>
+      <p class="sub">1. The portal reads the phone number out of the session and queues it.<br>
+        2. The bot claims the row within 5 seconds and writes the credentials to the panel.<br>
+        3. WhatsApp opens the socket — the number appears online in Telegram.</p>
+      <p class="sub">If the session was logged out on the phone, no bot can revive it. You have to pair again.</p>
+      <a class="btn ghost" href="./index.html">Pair a new number instead</a>
+    </section>
+
+    <footer class="footer">
+      <span>Talkless Ecosystem</span> · <a href="https://t.me/Talkless_xmd_bot" target="_blank" rel="noopener noreferrer">Telegram</a> · <a href="./admin.html">Admin Dashboard</a>
+    </footer>
+  </div>
+
+  <script>
+  (function () {
+    const form = document.getElementById('sessionForm');
+    const input = document.getElementById('sessionInput');
+    const submitBtn = document.getElementById('submitBtn');
+    const pasteBtn = document.getElementById('pasteBtn');
+    const statusBox = document.getElementById('statusBox');
+    const card = document.getElementById('progressCard');
+    const pill = document.getElementById('progressPill');
+    const title = document.getElementById('progressTitle');
+    const text = document.getElementById('progressText');
+    const box = document.getElementById('progressBox');
+    const subId = document.getElementById('subId');
+
+    let pollTimer = null;
+    let deadline = 0;
+
+    function notice(el, kind, msg) {
+      el.className = 'status-box show ' + kind;
+      el.textContent = msg;
+    }
+
+    function stopPolling() {
+      if (pollTimer) { clearInterval(pollTimer); pollTimer = null; }
+    }
+
+    const VIEW = {
+      pending:    ['QUEUED',    'Waiting for the bot…',        'The bot checks the queue every 5 seconds.', 'ok'],
+      claimed:    ['CLAIMED',   'Bot picked it up',             'Writing the credentials to the panel…',    'ok'],
+      connecting: ['CONNECTING','Connecting to WhatsApp…',      'This usually takes 5–20 seconds.',         'ok'],
+      connected:  ['CONNECTED', 'Session is live',              'The number is back online. Open Telegram to use it.', 'ok'],
+      failed:     ['FAILED',    'That session was rejected',    '',                                          'err'],
+    };
+
+    function render(status, error) {
+      const v = VIEW[status] || ['WORKING', 'Working…', '', 'ok'];
+      pill.textContent = v[0];
+      title.textContent = v[1];
+      notice(box, v[3], (error || v[2] || '').toString());
+      if (status === 'connected' || status === 'failed') {
+        stopPolling();
+        submitBtn.disabled = false;
+        submitBtn.textContent = status === 'connected' ? 'Connected ✓' : 'Try Another Session';
+      }
+    }
+
+    async function poll(id) {
+      try {
+        const r = await fetch('./api/session?id=' + encodeURIComponent(id), { cache: 'no-store' });
+        const d = await r.json().catch(function () { return {}; });
+        if (r.ok) render(d.status || 'pending', d.error);
+        if (Date.now() > deadline) {
+          stopPolling();
+          notice(box, 'err', 'Still not connected after 3 minutes. Check the panel console, then paste again.');
+          submitBtn.disabled = false;
+        }
+      } catch (e) { /* transient network error – keep polling */ }
+    }
+
+    pasteBtn.addEventListener('click', async function () {
+      try {
+        const t = await navigator.clipboard.readText();
+        if (t) { input.value = t.trim(); notice(statusBox, 'ok', 'Pasted from clipboard.'); }
+        else notice(statusBox, 'err', 'Clipboard is empty.');
+      } catch (e) {
+        notice(statusBox, 'err', 'Clipboard access was blocked — paste manually into the box.');
+      }
+    });
+
+    form.addEventListener('submit', async function (ev) {
+      ev.preventDefault();
+      const value = input.value.trim();
+      if (!value) return notice(statusBox, 'err', 'Paste the session ID first.');
+
+      stopPolling();
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+      statusBox.className = 'status-box';
+
+      try {
+        const r = await fetch('./api/session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ session: value }),
+        });
+        const d = await r.json().catch(function () { return {}; });
+        if (!r.ok) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Connect This Session';
+          return notice(statusBox, 'err', d.error || 'The portal rejected that session.');
+        }
+
+        card.style.display = 'block';
+        subId.textContent = '#' + d.id;
+        render('pending');
+        deadline = Date.now() + 180000;
+        pollTimer = setInterval(function () { poll(d.id); }, 3000);
+        poll(d.id);
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } catch (e) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Connect This Session';
+        notice(statusBox, 'err', 'Could not reach the server. Check your connection and try again.');
+      }
+    });
+  })();
+  </script>
+</body>
+</html>
